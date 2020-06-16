@@ -1,0 +1,48 @@
+ojciec(janusz,ola).
+ojciec(janusz,ala).
+ojciec(janusz,brajan).
+matka(zosia,ola).
+matka(zosia,ala).
+matka(zosia,brajan).
+mezczyzna(janusz).
+mezczyzna(brajan).
+kobieta(zosia).
+kobieta(ola).
+kobieta(ala).
+rodzic(janusz,ola).
+rodzic(janusz,ala).
+rodzic(janusz,brajan).
+rodzic(zosia,ola).
+rodzic(zosia,ala).
+rodzic(zosia,brajan).
+ojciec(zbigniew, janusz)
+ojciec(grazynka, zosia)
+
+siostra(X,Y) :-
+	kobieta(X),
+	rodzic(R, X),
+	rodzic(R, Y),
+	X \= Y.
+
+jest_matka(X) :- 
+	matka(X,Y),
+	Y \= X.
+
+
+jest_ojcem(X) :- 
+	ojciec(X,Y),
+	Y \= X.
+
+jest_synem(X) :-
+	mezczyzna(X),
+	rodzic(R, X),
+	X \= R.
+	
+dziadek(X,Y) :-
+	(ojciec(X, O);
+	ojciec(X, M)),
+	rodzic(M, Y);
+	rodzic(O, Y).
+
+
+

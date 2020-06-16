@@ -1,0 +1,22 @@
+is_prime(2).
+
+
+write_result(N) :-
+	write('N: '),
+	write(N).
+
+is_prime(X, Y) :-
+	Y > 1,
+	X mod Y =/= 0,
+	is_prime(X, Y).
+
+
+
+prime(LO, HI, N) :-
+	LO > 1,
+	N < HI,
+	between(LO, HI, N),
+	N is LO,
+	is_prime(N, N-1),
+	LO = LO + 1,
+	write_result(N).
